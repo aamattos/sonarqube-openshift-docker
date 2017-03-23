@@ -6,8 +6,7 @@ if [ "${1:0:1}" != '-' ]; then
   exec "$@"
 fi
 
-cd $SONARQUBE_HOME/extensions/plugins
-curl -o sonar-java-plugin-4.6.0.8784.jar -fSL https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-4.6.0.8784.jar \
+curl -o $SONARQUBE_HOME/extensions/plugins/sonar-java-plugin-4.6.0.8784.jar -fSL https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-4.6.0.8784.jar \
 
 
 exec java -jar lib/sonar-application-$SONAR_VERSION.jar \
