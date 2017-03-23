@@ -15,7 +15,7 @@ RUN cd /tmp \
     && mv sonarqube-$SONAR_VERSION sonarqube \
     && rm /tmp/sonarqube.zip* \
     && mkdir -p $SONARQUBE_HOME/extensions/plugins \
-    && mv /tmp/*.jar SONARQUBE_HOME/extensions/plugins
+    && mv /tmp/*.jar $SONARQUBE_HOME/extensions/plugins
     
 COPY run.sh $SONARQUBE_HOME/bin/
 
