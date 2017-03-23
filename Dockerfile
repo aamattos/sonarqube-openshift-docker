@@ -9,12 +9,14 @@ EXPOSE 9000
 ADD root /
 RUN cd /tmp \
     && curl -o sonarqube.zip -fSL https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-$SONAR_VERSION.zip \
+    && curl -o sonar-java-plugin-4.6.0.8784.jar -fSL https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-4.6.0.8784.jar \
     && cd /opt \
     && unzip /tmp/sonarqube.zip \
     && mv sonarqube-$SONAR_VERSION sonarqube \
-    && rm /tmp/sonarqube.zip* \    
-    && mkdir -p $SONARQUBE_HOME/extensions/plugins
-        
+    && rm /tmp/sonarqube.zip* \
+    && mkdir -p $SONARQUBE_HOME/extensions/plugins \
+    && mv /tmp/*.jar SONARQUBE_HOME/extensions/plugins
+    
 COPY run.sh $SONARQUBE_HOME/bin/
 
 RUN useradd -r sonar
