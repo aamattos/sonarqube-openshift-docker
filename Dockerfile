@@ -12,7 +12,9 @@ RUN cd /tmp \
     && cd /opt \
     && unzip /tmp/sonarqube.zip \
     && mv sonarqube-$SONAR_VERSION sonarqube \
-    && rm /tmp/sonarqube.zip*
+    && rm /tmp/sonarqube.zip* \
+    && curl -o $SONARQUBE_HOME/extensions/downloads/sonar-java-plugin-4.6.0.8784.jar -fSL https://sonarsource.bintray.com/Distribution/sonar-java-plugin/sonar-java-plugin-4.6.0.8784.jar \
+    
     
 COPY run.sh $SONARQUBE_HOME/bin/
 
